@@ -12,7 +12,7 @@ const Task = () => {
   const [error, setError] = useState(null);
   const fetchTask = async () => {
     try {
-      const { data } = await api.get(`api/task/${id}`);
+      const { data } = await api.get(`https://taskmanageapp.onrender.com/api/task/${id}`);
       setTask(data);
       setLoading(false);
     } catch (e) {
@@ -29,7 +29,7 @@ const Task = () => {
       const confirm = window.confirm("Are you sure you want to delete this task?");
       if (!confirm) return;
   
-      await api.delete(`api/tasks/${id}`);
+      await api.delete(`https://taskmanageapp.onrender.com/api/tasks/${id}`);
   
       navigate("/");
     } catch (e) {
