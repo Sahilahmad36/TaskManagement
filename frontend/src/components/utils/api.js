@@ -12,7 +12,7 @@ const refreshToken = async () => {
   const refreshToken = JSON.parse(localStorage.getItem("mern-task-management/user")).refreshToken;
   try {
     const { data } = await axios.post(
-      `${process.env.REACT_APP_BASE_API_URL}/api/auth/refresh_token`,
+      `https://taskmanageapp.onrender.com/api/auth/refresh_token`,
       {
         token: refreshToken,
       }
@@ -24,10 +24,10 @@ const refreshToken = async () => {
   }
 };
 
-// Add a request interceptor
+
 api.interceptors.request.use(
   async function (config) {
-    // Do something before request is sent
+    
     if (!localStorage.getItem("mern-task-management/user")) return config;
     const { exp } = jwt_decode(
       JSON.parse(localStorage.getItem("mern-task-management/user")).accessToken
@@ -40,18 +40,10 @@ api.interceptors.request.use(
     return config;
   },
   function (error) {
-    // Do something with request error
+  
     return Promise.reject(error);
   }
 );
 
-// Add a response interceptor
-// axios.interceptors.response.use(function (response) {
-//   // Do something with response data
-//   return response;
-// }, function (error) {
-//   // Do something with response error
-//   return Promise.reject(error);
-// });
 
 export default api;
