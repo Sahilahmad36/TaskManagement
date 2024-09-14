@@ -18,7 +18,7 @@ const NewTask = () => {
   const updateTask = async () => {
     setLoadingUpdate(true);
     try {
-      const { data } = await api.put(`/api/tasks/${id}`, {
+      const { data } = await api.put(`https://taskmanageapp.onrender.com/api/tasks/${id}`, {
         task: {
           title,
           description,
@@ -38,7 +38,7 @@ const NewTask = () => {
   const [loading, setLoading] = useState(true);
   const getTask = async () => {
     try {
-      const { data } = await api.get(`api/task/${id}`);
+      const { data } = await api.get(`https://taskmanageapp.onrender.com/api/task/${id}`);
       setTitle(data.title);
       setDescription(data.description);
       setDeadline(data.deadline.split("T")[0]);
