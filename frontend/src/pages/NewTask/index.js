@@ -15,7 +15,7 @@ const NewTask = () => {
   const addTask = async () => {
     setLoading(true);
     try {
-      const { data } = await api.post("/api/tasks", {
+      const { data } = await api.post("https://taskmanageapp.onrender.com/api/tasks", {
         title,
         description,
         deadline,
