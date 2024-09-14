@@ -12,7 +12,7 @@ const Home = () => {
 
   const getTasks = async () => {
     try {
-      const { data } = await api.get("/api/tasks");
+      const { data } = await api.get("https://taskmanageapp.onrender.com/api/tasks");
       setTasks(data);
     } catch (err) {
       console.log(err);
